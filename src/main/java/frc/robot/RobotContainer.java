@@ -154,7 +154,7 @@ public class RobotContainer {
             new GoToPath(
                 drive,
                 CommandScheduler.getInstance(),
-                new Pose2d(3.704, 3.704, Rotation2d.fromDegrees(-58.299)),
+                new Pose2d(6.251, 7, Rotation2d.fromDegrees(0)),
                 false));
   }
 
