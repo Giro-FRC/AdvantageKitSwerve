@@ -8,10 +8,12 @@ import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.util.Units;
 
 public class DriveConstants {
-  public static final double maxSpeedMetersPerSec = 4.8;
+  public static final double maxSpeedMetersPerSec = 4.0; // Değişmesi gerekecek muhtemelen
   public static final double odometryFrequency = 100.0; // Hz
-  public static final double trackWidth = Units.inchesToMeters(26.5);
-  public static final double wheelBase = Units.inchesToMeters(26.5);
+
+  public static final double trackWidth = 0.50; // Meters
+  public static final double wheelBase = 0.70; // Meters
+
   public static final double driveBaseRadius = Math.hypot(trackWidth / 2.0, wheelBase / 2.0);
 
   public static final Translation2d[] moduleTranslations =
@@ -22,15 +24,17 @@ public class DriveConstants {
         new Translation2d(-trackWidth / 2.0, -wheelBase / 2.0)
       };
 
-  // Zeroed rotation values for each module, see setup instructions
+  // Zeroed rotation values for each module, see setup instructions (Phoneix
+  // Tunerda ofset kısmına girdiğimiz değerlerin aynısı)
   public static final Rotation2d frontLeftZeroRotation = new Rotation2d(0.0);
   public static final Rotation2d frontRightZeroRotation = new Rotation2d(0.0);
   public static final Rotation2d backLeftZeroRotation = new Rotation2d(0.0);
   public static final Rotation2d backRightZeroRotation = new Rotation2d(0.0);
 
-  // Device CAN IDs
-  public static final int pigeonCanId = 9;
+  // Device CAN IDs (Kod Pigeonda desteklediği için var. KUllanılmayacak.)
+  public static final int pigeonCanId = 20;
 
+  // (Motorları sıfırlayıp canleri buradakiler gibi olacak şekilde ayarlayın.)
   public static final int frontLeftDriveCanId = 1;
   public static final int backLeftDriveCanId = 3;
   public static final int frontRightDriveCanId = 5;
@@ -48,16 +52,20 @@ public class DriveConstants {
 
   // Drive motor configuration
   public static final int driveMotorCurrentLimit = 50;
-  public static final double wheelRadiusMeters = Units.inchesToMeters(1.5);
+  public static final double wheelRadiusMeters = Units.inchesToMeters(1.5); // Güncelle
+
   public static final double driveMotorReduction =
-      (45.0 * 22.0) / (14.0 * 15.0); // MAXSwerve with 14 pinion teeth and 22 spur teeth
-  public static final DCMotor driveGearbox = DCMotor.getNeoVortex(1);
+      ((50.0 / 14.0) * (19.0 / 25.0) * (45.0 / 15.0)); // Yaklaşık 8.14 yapıyor zaten
+
+  public static final DCMotor driveGearbox = DCMotor.getNEO(1);
 
   // Drive encoder configuration
   public static final double driveEncoderPositionFactor =
-      2 * Math.PI / driveMotorReduction; // Rotor Rotations -> Wheel Radians
+      2 * Math.PI / driveMotorReduction; // Rotor Rotations ->
+  // Wheel Radians
   public static final double driveEncoderVelocityFactor =
-      (2 * Math.PI) / 60.0 / driveMotorReduction; // Rotor RPM -> Wheel Rad/Sec
+      (2 * Math.PI) / 60.0 / driveMotorReduction; // Rotor RPM ->
+  // Wheel Rad/Sec
 
   // Drive PID configuration
   public static final double driveKp = 0.0;
@@ -67,19 +75,25 @@ public class DriveConstants {
 
   public static final double driveSimP = 0.9;
   public static final double driveSimD = 0.0;
-  public static final double driveSimKs = 0.0;
-  public static final double driveSimKv = 0.0789;
+  public static final double driveSimKs = 0.02317;
+  public static final double driveSimKv = 0.07829;
 
   // Turn motor configuration
   public static final boolean turnInverted = false;
   public static final int turnMotorCurrentLimit = 20;
-  public static final double turnMotorReduction = 9424.0 / 203.0;
-  public static final DCMotor turnGearbox = DCMotor.getNeo550(1);
+  public static final double turnMotorReduction = 12.8;
+  public static final DCMotor turnGearbox = DCMotor.getNEO(1);
 
   // Turn encoder configuration
   public static final boolean turnEncoderInverted = true;
-  public static final double turnEncoderPositionFactor = 2 * Math.PI; // Rotations -> Radians
-  public static final double turnEncoderVelocityFactor = (2 * Math.PI) / 60.0; // RPM -> Rad/Sec
+  public static final double turnEncoderPositionFactor =
+      2 * Math.PI / turnMotorReduction; // Rotations
+  // ->
+  // Radians
+  public static final double turnEncoderVelocityFactor =
+      (2 * Math.PI) / 60.0 / turnMotorReduction; // RPM
+  // ->
+  // Rad/Sec
 
   // Turn PID configuration
   public static final double turnKp = 2.0;
