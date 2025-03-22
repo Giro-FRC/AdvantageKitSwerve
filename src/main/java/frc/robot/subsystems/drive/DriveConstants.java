@@ -8,7 +8,7 @@ import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.util.Units;
 
 public class DriveConstants {
-  public static final double maxSpeedMetersPerSec = 4.0; // Değişmesi gerekecek muhtemelen
+  public static final double maxSpeedMetersPerSec = 4; // Değişmesi gerekecek muhtemelen
   public static final double odometryFrequency = 100.0; // Hz
 
   public static final double trackWidth = 0.50; // Meters
@@ -104,8 +104,8 @@ public class DriveConstants {
   public static final double turnPIDMaxInput = 2 * Math.PI; // Radians
 
   // PathPlanner configuration
-  public static final double robotMassKg = 74.088;
-  public static final double robotMOI = 6.883;
+  public static final double robotMassKg = 42;
+  public static final double robotMOI = 2.590;
   public static final double wheelCOF = 1.2;
   public static final RobotConfig ppConfig =
       new RobotConfig(
