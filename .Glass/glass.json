@@ -1,0 +1,18 @@
+{
+  "NetworkTables": {
+    "Retained Values": {
+      "open": false
+    }
+  },
+  "NetworkTables Info": {
+    "Server": {
+      "open": true
+    },
+    "visible": true
+  },
+  "NetworkTables Settings": {
+    "listenAddress": "127.0.0.1",
+    "mode": "Server",
+    "serverTeam": "9436"
+  }
+}
