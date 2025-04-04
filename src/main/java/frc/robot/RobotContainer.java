@@ -158,12 +158,35 @@ public class RobotContainer {
                 .ignoringDisable(true));
 
     controller
+        .leftStick()
+        .onTrue(
+            new GoToPath(
+                drive,
+                CommandScheduler.getInstance(),
+                new Pose2d(1.615, 0.759, Rotation2d.fromDegrees(-127.694))));
+    controller
+        .button(1)
+        .onTrue(
+            new GoToPath(
+                drive,
+                CommandScheduler.getInstance(),
+                new Pose2d(1.675, 7.301, Rotation2d.fromDegrees(127.972))));
+
+    controller
+        .leftTrigger()
+        .onTrue(
+            new GoToPath(
+                drive,
+                CommandScheduler.getInstance(),
+                new Pose2d(3.641, 5.436, Rotation2d.fromDegrees(-60.422))));
+
+    controller
         .button(3)
         .onTrue(
             new GoToPath(
                 drive,
                 CommandScheduler.getInstance(),
-                new Pose2d(1.578, 7.293, Rotation2d.fromDegrees(-49.037))));
+                new Pose2d(2.825, 4.002, Rotation2d.fromDegrees(0))));
 
     controller
         .button(4)
@@ -171,7 +194,28 @@ public class RobotContainer {
             new GoToPath(
                 drive,
                 CommandScheduler.getInstance(),
-                new Pose2d(3.704, 5.478, Rotation2d.fromDegrees(-58.299))));
+                new Pose2d(3.591, 2.575, Rotation2d.fromDegrees(59.036))));
+    controller
+        .button(5)
+        .onTrue(
+            new GoToPath(
+                drive,
+                CommandScheduler.getInstance(),
+                new Pose2d(5.349, 2.560, Rotation2d.fromDegrees(123.179))));
+    controller
+        .button(6)
+        .onTrue(
+            new GoToPath(
+                drive,
+                CommandScheduler.getInstance(),
+                new Pose2d(6.176, 4.002, Rotation2d.fromDegrees(180))));
+    controller
+        .button(7)
+        .onTrue(
+            new GoToPath(
+                drive,
+                CommandScheduler.getInstance(),
+                new Pose2d(5.379, 5.385, Rotation2d.fromDegrees(125.311))));
   }
 
   /**
