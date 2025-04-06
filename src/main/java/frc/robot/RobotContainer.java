@@ -21,12 +21,11 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.commands.DriveCommands;
-import frc.robot.commands.GoToPath;
+import frc.robot.commands.OtoAligment;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.drive.GyroIO;
 import frc.robot.subsystems.drive.GyroIONavX;
@@ -146,7 +145,7 @@ public class RobotContainer {
             drive,
             () -> -controller.getLeftY(),
             () -> -controller.getLeftX(),
-            () -> -controller.getRightY()));
+            () -> -controller.getRightX()));
 
     // Lock to 0° when A button is held
     controller
@@ -172,65 +171,8 @@ public class RobotContainer {
                     drive)
                 .ignoringDisable(true));
 
-    controller
-        .leftStick()
-        .onTrue(
-            new GoToPath(
-                drive,
-                CommandScheduler.getInstance(),
-                new Pose2d(1.615, 0.759, Rotation2d.fromDegrees(-127.694))));
-    controller
-        .button(1)
-        .onTrue(
-            new GoToPath(
-                drive,
-                CommandScheduler.getInstance(),
-                new Pose2d(1.675, 7.301, Rotation2d.fromDegrees(127.972))));
-
-    controller
-        .leftTrigger()
-        .onTrue(
-            new GoToPath(
-                drive,
-                CommandScheduler.getInstance(),
-                new Pose2d(3.641, 5.436, Rotation2d.fromDegrees(-60.422))));
-
-    controller
-        .button(3)
-        .onTrue(
-            new GoToPath(
-                drive,
-                CommandScheduler.getInstance(),
-                new Pose2d(2.825, 4.002, Rotation2d.fromDegrees(0))));
-
-    controller
-        .button(4)
-        .onTrue(
-            new GoToPath(
-                drive,
-                CommandScheduler.getInstance(),
-                new Pose2d(3.591, 2.575, Rotation2d.fromDegrees(59.036))));
-    controller
-        .button(5)
-        .onTrue(
-            new GoToPath(
-                drive,
-                CommandScheduler.getInstance(),
-                new Pose2d(5.349, 2.560, Rotation2d.fromDegrees(123.179))));
-    controller
-        .button(6)
-        .onTrue(
-            new GoToPath(
-                drive,
-                CommandScheduler.getInstance(),
-                new Pose2d(6.176, 4.002, Rotation2d.fromDegrees(180))));
-    controller
-        .button(7)
-        .onTrue(
-            new GoToPath(
-                drive,
-                CommandScheduler.getInstance(),
-                new Pose2d(5.379, 5.385, Rotation2d.fromDegrees(125.311))));
+    controller.a().onTrue(new OtoAligment(drive, true));
+    controller.y().onTrue(new OtoAligment(drive, false));
   }
 
   /**
