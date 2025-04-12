@@ -8,7 +8,7 @@ import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.util.Units;
 
 public class DriveConstants {
-  public static final double maxSpeedMetersPerSec = 4; // Değişmesi gerekecek muhtemelen
+  public static final double maxSpeedMetersPerSec = 4; // It will probably have to change
   public static final double odometryFrequency = 100.0; // Hz
 
   public static final double trackWidth = 0.50; // Meters
@@ -24,17 +24,16 @@ public class DriveConstants {
         new Translation2d(-trackWidth / 2.0, -wheelBase / 2.0)
       };
 
-  // Zeroed rotation values for each module, see setup instructions (Phoneix
-  // Tunerda ofset kısmına girdiğimiz değerlerin aynısı)
+  // Zeroed rotation values for each module, see setup instructions
   public static final Rotation2d frontLeftZeroRotation = new Rotation2d(0.0);
   public static final Rotation2d frontRightZeroRotation = new Rotation2d(0.0);
   public static final Rotation2d backLeftZeroRotation = new Rotation2d(0.0);
   public static final Rotation2d backRightZeroRotation = new Rotation2d(0.0);
 
-  // Device CAN IDs (Kod Pigeonda desteklediği için var. KUllanılmayacak.)
+  // Device CAN IDs 
   public static final int pigeonCanId = 20;
 
-  // (Motorları sıfırlayıp canleri buradakiler gibi olacak şekilde ayarlayın.)
+  
   public static final int frontLeftDriveCanId = 1;
   public static final int backLeftDriveCanId = 3;
   public static final int frontRightDriveCanId = 5;
@@ -52,10 +51,10 @@ public class DriveConstants {
 
   // Drive motor configuration
   public static final int driveMotorCurrentLimit = 50;
-  public static final double wheelRadiusMeters = Units.inchesToMeters(1.5); // Güncelle
+  public static final double wheelRadiusMeters = Units.inchesToMeters(1.5);
 
   public static final double driveMotorReduction =
-      ((50.0 / 14.0) * (19.0 / 25.0) * (45.0 / 15.0)); // Yaklaşık 8.14 yapıyor zaten
+      ((50.0 / 14.0) * (19.0 / 25.0) * (45.0 / 15.0)); 
 
   public static final DCMotor driveGearbox = DCMotor.getNEO(1);
 
